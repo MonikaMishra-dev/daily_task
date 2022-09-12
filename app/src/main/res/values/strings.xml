@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">DynamicViewProject</string>
+    <string name="display_paragraph">Paragraph</string>
+    <string name="display_bulleted">bulleted</string>
+    <string name="display_steps">steps</string>
+    <string name="title">Creative Articles</string>
+    <string name="select">Select your choice</string>
+    <string name="follow">Follow the steps to create your account</string>
+    <string name="paragraph">Generating random paragraphs can be an excellent way for writers
+        to get their creative flow going at the beginning of the day.
+        The writer has no idea what topic the random paragraph will be about when it appears.
+        This forces the writer to use creativity to complete one of three common writing challenges.
+        The writer can use the paragraph as the first one of a short story and build upon it.
+        A second option is to use the random paragraph somewhere in a short story they create.
+        The third option is to have the random paragraph be the ending paragraph in a short story.</string>
+    <string name="para">Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears.</string>
+    <string name="article1">Article1</string>
+    <string name="enter_text">Enter text</string>
+    <string-array name="listItems">
+    <item>Yahoo</item>
+    <item>Hotmail</item>
+    <item>Gmail</item>
+    <item>Facebook</item>
+    <item>Reddit</item>
+    <item>Instagram</item>
+</string-array>
+    <string-array name="steps">
+        <item>open the link on a separate tab</item>
+        <item>enter your login id</item>
+        <item>enter your password</item>
+        <item>enter your registered mobile number</item>
+        <item>enter otp received on the registered number</item>
+        <item>click on submit</item>
+    </string-array>
+</resources>
