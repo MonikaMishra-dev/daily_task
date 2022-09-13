@@ -4,11 +4,14 @@ package com.example.dynamicviewproject
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -108,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         }
         val paragraph = TextView(this)
         dynamicViewModel.paragraphLiveData.observe(this, Observer {
-                paragraph.text = it
+                paragraph.text = HtmlCompat.fromHtml(it,HtmlCompat.FROM_HTML_MODE_LEGACY)
         })
         paragraph.apply {
             val params = LinearLayout.LayoutParams(
@@ -127,6 +130,9 @@ class MainActivity : AppCompatActivity() {
                 ), 1.0f
             )
             this.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+            this.linksClickable = true
+            this.movementMethod = LinkMovementMethod.getInstance()
+            this.setLinkTextColor(ContextCompat.getColor(applicationContext, R.color.purple_500))
         }
         binding.linearLayout.apply {
             this.removeAllViews()
@@ -151,14 +157,15 @@ class MainActivity : AppCompatActivity() {
             this.setTextColor(ContextCompat.getColor(applicationContext, R.color.purple_700))
         }
         val rb = arrayOfNulls<RadioButton>(6)
+        dynamicViewModel.bulletedLiveData.observe(this, Observer {
+            for(i in 0..5)
+            rb[i]?.text = it[i]
+        })
         val rg = RadioGroup(this)
         rg.orientation = RadioGroup.VERTICAL
         rg.setPadding(16)
         for (i in 0..5) {
             rb[i] = RadioButton(this)
-            dynamicViewModel.bulletedLiveData.observe(this, Observer {
-                rb[i]?.text = it[i]
-            })
             rb[i].apply {
                // this?.text = resources.getStringArray(R.array.listItems)[i]
                 dynamicViewModel.setBulletedText()
@@ -201,16 +208,18 @@ class MainActivity : AppCompatActivity() {
         }
         binding.linearLayout.addView(title)
         val tv = arrayOfNulls<TextView>(6)
+        dynamicViewModel.stepsLiveData.observe(this, Observer {
+            for(i in 0..5)
+            tv[i]?.text = "${i + 1}. ${it[i]}"
+        })
         val params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
         params.setMargins(10, 20, 0, 0)
+
         for (i in 0..5) {
             tv[i] = TextView(this)
-            dynamicViewModel.stepsLiveData.observe(this, Observer {
-                tv[i]?.text = "${i + 1}. ${it[i]}"
-            })
             tv[i].apply {
                // this?.text = "${i + 1}. ${resources.getStringArray(R.array.steps)[i]}"
                 dynamicViewModel.setStepsText()

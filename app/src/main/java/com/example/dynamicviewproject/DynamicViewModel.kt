@@ -15,10 +15,15 @@ class DynamicViewModel:ViewModel() {
 
      fun setParagraphText()
      {
-       paragraphLiveData.value = "Generating random paragraphs can be an excellent" +
-               " way for writers to get their creative flow going at the beginning " +
-               "of the day. The writer has no idea what topic the random paragraph " +
-               "will be about when it appears."
+       paragraphLiveData.value = "<h6><font color=\"#FF0000\">About  article</font></h6>" +
+               "random paragraphs can be an excellent way for writers to get their creative"+
+               "flow going at the beginning of the day.  " +
+               "<a href=\"https://kotlinlang.org/docs/home.html\">read more..</a>" +
+               "<h6><font color=\"#FF0000\">About author</font></h6>A second option is to use the" +
+               " random paragraph somewhere in a short story they create.The third option "+
+         "is to have the random paragraph be the ending paragraph in a short story. "+
+         "<a href=\"https://kotlinlang.org/docs/home.html\">read more..</a>"
+
      }
 
     fun setBulletedText()
